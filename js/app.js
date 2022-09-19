@@ -38,11 +38,11 @@ let seattle = {
   min_hr: 23,
   max_hr: 65,
   avg_cookies: 6.3,
-  rand_cust_hr: function() {
+  rand_cust_hr: function () {
     let rand_cust = Math.floor(Math.random() * (this.max_hr - this.min_hr));
     return rand_cust;
   },
-  gen_sales_array: function() {
+  gen_sales_array: function () {
     let sales_array = [];
     for (let i = 0; i < 14; i++) {
       let hour_sales = Math.floor(this.avg_cookies * this.rand_cust_hr());
@@ -60,11 +60,11 @@ let tokyo = {
   min_hr: 3,
   max_hr: 24,
   avg_cookies: 1.2,
-  rand_cust_hr: function() {
+  rand_cust_hr: function () {
     let rand_cust = Math.floor(Math.random() * (this.max_hr - this.min_hr));
     return rand_cust;
   },
-  gen_sales_array: function() {
+  gen_sales_array: function () {
     let sales_array = [];
     for (let i = 0; i < 14; i++) {
       let hour_sales = Math.floor(this.avg_cookies * this.rand_cust_hr());
@@ -74,9 +74,30 @@ let tokyo = {
   }
 };
 
+let store_array = [seattle, tokyo];
 
-// const displaySales = function() {
+const displaySales = function () {
 
-// };
+  for (let i=0; i < store_array.length; i++) {
+
+    let section = document.createElement('section');
+    let title = document.createElement('h2');
+    let list = document.createElement('ul');
+    let loc_sales = store_array[i].gen_sales_array();
+    document.body.appendChild(section);
+    title.innerHTML = store_array[i].location;
+    section.appendChild(title);
+    section.appendChild(list);
+
+    for (let i = 0; i < loc_sales.length; i++) {
+      let list_el = document.createElement('li');
+      list_el.innerHTML = loc_sales[i] + ' cookies';
+      list.appendChild(list_el);
+    }
+  }
+};
+
+displaySales();
+
 
 
