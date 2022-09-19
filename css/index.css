@@ -1,0 +1,119 @@
+/* Salmon Color pallette */
+
+/* 
+color:#a04f2c , dark red orange
+color: #b96f3f, salmon red
+color: #ceb679, light yellow
+*/
+
+/* universal styles */
+
+* {
+  color: #F0F7F4;
+  padding: 10 px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  
+}
+
+/* body styles */
+
+body, html {
+  background-color: #221e21;
+  /* background-color: #ceb679; */
+  padding: 10px;
+  height: 100%;
+}
+header{
+  /* display: flex; */
+  display: flex;
+  margin-bottom: 10px;
+  border: 2px solid #ceb679;
+  background-color: #32292F;
+  padding: 10px;
+  align-items: center;
+}
+
+header img {
+  width: 25vw;
+  height: 8vw;
+  margin-left: 4vw;
+}
+
+
+section {
+  margin-bottom: 10px;
+  border: 2px solid #ceb679;
+  background-color: #32292F;
+  padding: 5px;
+  }
+
+/* Hero style */
+
+#hero {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../img/river.jpg');
+  height: 50%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  /* background-origin: content-box; */
+  /* width: 70%; */
+ 
+}
+
+#hero-text {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+}
+
+#subtext {
+  margin-top: 1vw;
+}
+
+#banner {
+  font-size: 8vw;
+}
+
+#links a {
+  margin-left:10px;
+}
+
+/* heading styles */
+
+h1, h2, h4 {
+  color: #b96f3f;
+  font-weight: bold;
+  margin: 10px;
+  font-family: 'Roboto', sans-serif;
+  
+}
+
+h1 {
+  font-size: 5vw;
+}
+
+h2 {
+  font-size: 3vw;
+}
+
+h4 {
+  font-size: 2vw;
+}
+
+/* list styles */
+
+
+ul {
+  
+  margin-left: 30px;
+  font-size: 1 vw;
+  list-style-type: square;
+}
+
+li {
+  margin-bottom: 10px;
+}
