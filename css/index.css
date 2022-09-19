@@ -1,0 +1,78 @@
+/* Salmon Color pallette */
+
+/* 
+color:#a04f2c , dark red orange
+color: #b96f3f, salmon red
+color: #ceb679, light yellow
+*/
+
+/* universal styles */
+
+* {
+  color: #F0F7F4;
+  padding: 10 px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  
+}
+
+/* body styles */
+
+body {
+  background-color: #ceb679;
+  padding: 10px;
+}
+header{
+  display: flex;
+  margin-bottom: 10px;
+  border: 2px solid #a04f2c;
+  background-color: #32292F;
+  padding: 10px;
+  align-items: center;
+  justify-content: space-between;
+
+}
+
+
+section {
+  margin-bottom: 10px;
+  border: 2px solid #a04f2c;
+  background-color: #32292F;
+  padding: 5px;
+  }
+
+
+/* heading styles */
+
+h1, h2, h4 {
+  color: #b96f3f;
+  font-weight: bold;
+  margin: 10px;
+  font-family: 'Roboto', sans-serif;
+  
+}
+
+h1 {
+  font-size: 5vw;
+}
+
+h2 {
+  font-size: 3vw;
+}
+
+h4 {
+  font-size: 2vw;
+}
+
+/* list styles */
+
+
+ul {
+  
+  margin-left: 30px;
+  font-size: 1 vw;
+  list-style-type: square;
+}
+
+li {
+  margin-bottom: 10px;
+}
