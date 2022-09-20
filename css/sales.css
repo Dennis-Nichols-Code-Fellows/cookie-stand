@@ -73,5 +73,17 @@ li {
   margin-bottom: 10px;
 }
 
+/* Table styling */
 
+#table {
+  background-color: transparent;
+  border: none;
+  width: 100%;
 
+}
+
+th, td {
+  border: 2px solid #a04f2c;
+
+  background-color: #32292F;
+}
