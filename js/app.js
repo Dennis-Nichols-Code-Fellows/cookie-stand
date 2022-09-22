@@ -47,7 +47,7 @@ Store.prototype.render_row = function () {
     new_td.innerHTML = this.sales_array[i];
     new_row.appendChild(new_td);
   }
-  let rw_total = document.createElement('th');
+  let rw_total = document.createElement('td');
   rw_total.innerHTML = sumArray(this.gen_sales_array());
   new_row.appendChild(rw_total);
 };
@@ -87,13 +87,15 @@ const make_table = function () {
 
 const create_header = function () {
   //make row for header
+  let thead = document.createElement('thead');
+  table.appendChild(thead);
   let hdr_row = document.createElement('tr');
-  table.appendChild(hdr_row);
+  thead.appendChild(hdr_row);
 
   //add blank cell to improve look
-  let blank_cell = (document.createElement('td'));
-  blank_cell.innerHTML = '&nbsp;';
-  hdr_row.appendChild(blank_cell);
+  let store_cell = (document.createElement('th'));
+  store_cell.innerHTML = 'Store';
+  hdr_row.appendChild(store_cell);
 
   //add header elements to row
   for (let i = 0; i < times_array.length; i++) {
@@ -102,7 +104,7 @@ const create_header = function () {
     hdr.innerHTML = times_array[i];
     hdr_row.appendChild(hdr);
   }
-  let lbl_cell = (document.createElement('td'));
+  let lbl_cell = (document.createElement('th'));
   lbl_cell.innerHTML = 'Daily Store Totals';
   hdr_row.appendChild(lbl_cell);
 };
@@ -111,11 +113,13 @@ const create_header = function () {
 // Create function to render FOOTER
 
 const create_footer = function () {
+  let tfoot = document.createElement('tfoot');
+  table.appendChild(tfoot);
   let ftr_row = document.createElement('tr');
-  table.appendChild(ftr_row);
+  tfoot.appendChild(ftr_row);
 
   //add blank cell to improve look
-  let ttl_cell = (document.createElement('td'));
+  let ttl_cell = (document.createElement('th'));
   ttl_cell.innerHTML = 'Totals';
   ftr_row.appendChild(ttl_cell);
 
@@ -126,7 +130,7 @@ const create_footer = function () {
     for (let j = 0; j < store_array.length; j++) {
       hr_total += store_array[j].sales_array[i];
     }
-    let hr_ttl_cell = document.createElement('td');
+    let hr_ttl_cell = document.createElement('th');
     hr_ttl_cell.innerHTML = hr_total;
     ftr_row.appendChild(hr_ttl_cell);
     overall_total += hr_total;
@@ -137,7 +141,37 @@ const create_footer = function () {
 };
 
 
-// Make display function
+
+
+
+
+// Code to grab form data
+
+const form = document.getElementById('store-form');
+
+
+// Create event handler for new form submission
+
+const handle_submit = () => {
+  //prevents browser from constantly submitting form with blank values
+  event.preventDefault();
+  //grab form values
+  let new_location = event.target.location.value;
+  let new_min_cust = event.target.min_cust.value;
+  let new_max_cust = event.target.max_cust.value;
+  let new_avg_cookies = event.target.avg_cookies.value;
+  //create new store object
+  let newStore = new Store(new_location, new_min_cust, new_max_cust, new_avg_cookies);
+  //delete old footer
+  table.deleteTFoot();
+  //add new store to stores array (key to how I calculate footer values)
+  store_array.push(newStore);
+  //add new store row and readd footer
+  newStore.render_row();
+  create_footer();
+};
+
+// Display table function
 
 const displayTable = function () {
   make_table();
@@ -145,14 +179,11 @@ const displayTable = function () {
   for (let i = 0; i < store_array.length; i++) {
     store_array[i].render_row();
   }
+  // add event listener to form
+  form.addEventListener('submit', handle_submit);
   create_footer();
 };
 
 // Invoke display function
-
 displayTable();
-
-
-// Code to grab form data
-
 
