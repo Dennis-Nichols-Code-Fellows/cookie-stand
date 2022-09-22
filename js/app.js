@@ -47,7 +47,7 @@ Store.prototype.render_row = function () {
     new_td.innerHTML = this.sales_array[i];
     new_row.appendChild(new_td);
   }
-  let rw_total = document.createElement('th');
+  let rw_total = document.createElement('td');
   rw_total.innerHTML = sumArray(this.gen_sales_array());
   new_row.appendChild(rw_total);
 };
@@ -87,13 +87,15 @@ const make_table = function () {
 
 const create_header = function () {
   //make row for header
+  let thead = document.createElement('thead');
+  table.appendChild(thead);
   let hdr_row = document.createElement('tr');
-  table.appendChild(hdr_row);
+  thead.appendChild(hdr_row);
 
   //add blank cell to improve look
-  let blank_cell = (document.createElement('td'));
-  blank_cell.innerHTML = '&nbsp;';
-  hdr_row.appendChild(blank_cell);
+  let store_cell = (document.createElement('th'));
+  store_cell.innerHTML = 'Store';
+  hdr_row.appendChild(store_cell);
 
   //add header elements to row
   for (let i = 0; i < times_array.length; i++) {
@@ -102,7 +104,7 @@ const create_header = function () {
     hdr.innerHTML = times_array[i];
     hdr_row.appendChild(hdr);
   }
-  let lbl_cell = (document.createElement('td'));
+  let lbl_cell = (document.createElement('th'));
   lbl_cell.innerHTML = 'Daily Store Totals';
   hdr_row.appendChild(lbl_cell);
 };
@@ -117,7 +119,7 @@ const create_footer = function () {
   tfoot.appendChild(ftr_row);
 
   //add blank cell to improve look
-  let ttl_cell = (document.createElement('td'));
+  let ttl_cell = (document.createElement('th'));
   ttl_cell.innerHTML = 'Totals';
   ftr_row.appendChild(ttl_cell);
 
@@ -128,7 +130,7 @@ const create_footer = function () {
     for (let j = 0; j < store_array.length; j++) {
       hr_total += store_array[j].sales_array[i];
     }
-    let hr_ttl_cell = document.createElement('td');
+    let hr_ttl_cell = document.createElement('th');
     hr_ttl_cell.innerHTML = hr_total;
     ftr_row.appendChild(hr_ttl_cell);
     overall_total += hr_total;

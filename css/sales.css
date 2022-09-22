@@ -86,11 +86,22 @@ li {
 
 }
 
-th, td {
-  border: 2px solid #a04f2c;
 
+
+td {
+  border: 2px solid #ceb679;
+  padding: 4px;
   background-color: #32292F;
+  text-align: center;
 }
+
+
+th {
+  padding: 4px;
+  border: 2.5px solid #ceb679;
+  background-color: #a04f2c; 
+}
+
 
 /* Form styles */
 
