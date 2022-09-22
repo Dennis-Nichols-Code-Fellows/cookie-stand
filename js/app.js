@@ -111,8 +111,10 @@ const create_header = function () {
 // Create function to render FOOTER
 
 const create_footer = function () {
+  let tfoot = document.createElement('tfoot');
+  table.appendChild(tfoot);
   let ftr_row = document.createElement('tr');
-  table.appendChild(ftr_row);
+  tfoot.appendChild(ftr_row);
 
   //add blank cell to improve look
   let ttl_cell = (document.createElement('td'));
@@ -137,7 +139,37 @@ const create_footer = function () {
 };
 
 
-// Make display function
+
+
+
+
+// Code to grab form data
+
+const form = document.getElementById('store-form');
+
+
+// Create event handler for new form submission
+
+const handle_submit = () => {
+  //prevents browser from constantly submitting form with blank values
+  event.preventDefault();
+  //grab form values
+  let new_location = event.target.location.value;
+  let new_min_cust = event.target.min_cust.value;
+  let new_max_cust = event.target.max_cust.value;
+  let new_avg_cookies = event.target.avg_cookies.value;
+  //create new store object
+  let newStore = new Store(new_location, new_min_cust, new_max_cust, new_avg_cookies);
+  //delete old footer
+  table.deleteTFoot();
+  //add new store to stores array (key to how I calculate footer values)
+  store_array.push(newStore);
+  //add new store row and readd footer
+  newStore.render_row();
+  create_footer();
+};
+
+// Display table function
 
 const displayTable = function () {
   make_table();
@@ -145,14 +177,11 @@ const displayTable = function () {
   for (let i = 0; i < store_array.length; i++) {
     store_array[i].render_row();
   }
+  // add event listener to form
+  form.addEventListener('submit', handle_submit);
   create_footer();
 };
 
 // Invoke display function
-
 displayTable();
-
-
-// Code to grab form data
-
 
