@@ -30,12 +30,16 @@ header{
 
 section {
   margin-bottom: 10px;
+  margin-top: 10px;
   border: 2px solid #a04f2c;
   background-color: #32292F;
   padding: 5px;
   font-family: Arial, Helvetica, sans-serif;
   }
 
+form {
+  margin-left: 10px;
+}
 
 /* heading styles */
 
@@ -86,4 +90,36 @@ th, td {
   border: 2px solid #a04f2c;
 
   background-color: #32292F;
+}
+
+/* Form styles */
+
+#form {
+  width: 50%;
+}
+
+form ul {
+  margin-left: 0px;
+  font-size: 1 vw;
+  list-style-type: none;
+}
+
+form li {
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+form button {
+  color: #b96f3f;
+  font-weight: bold;
+  transition: 500ms;
+}
+
+form button:hover {
+  color: #32292F;
+  background-color: #ceb679;
+}
+
+form input {
+  color: black;
 }
