@@ -166,6 +166,15 @@ const handle_submit = () => {
   let new_max_cust = event.target.max_cust.value;
   let new_avg_cookies = event.target.avg_cookies.value;
 
+  //check if store already Exists and remove it from the store array if so
+
+  for (let i = 0; i < store_array.length; i++) {
+    if (store_array[i].location === new_location) {
+      store_array.splice(i,1);
+      tbod.deleteRow(i);
+    }
+  }
+
   //create new store object
   let newStore = new Store(new_location, new_min_cust, new_max_cust, new_avg_cookies);
   //delete old footer
