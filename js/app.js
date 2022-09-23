@@ -1,9 +1,5 @@
 'use strict';
 
-// Create times array needed for generating lists later on, create table variable
-
-let times_array = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
-let table = document.createElement('table');
 
 // Create Store CLASS
 
@@ -37,7 +33,7 @@ Store.prototype.render_row = function () {
   //create and append new row element to table
   // Object.assign(lookup, {this.location: [...this.sales_array]} )
   let new_row = document.createElement('tr');
-  table.appendChild(new_row);
+  tbod.appendChild(new_row);
   let row_lbl = document.createElement('td');
   row_lbl.innerHTML = this.location;
   new_row.appendChild(row_lbl);
@@ -74,6 +70,15 @@ let sumArray = function (array) {
   }
   return sum;
 };
+
+// TABLE CREATION
+
+// Create times array needed for generating lists later on, create table variable, tbody variable
+
+let times_array = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
+let table = document.createElement('table');
+let tbod = document.createElement('tbody');
+table.appendChild(tbod);
 
 // Create function for render TABLE
 
@@ -160,6 +165,7 @@ const handle_submit = () => {
   let new_min_cust = event.target.min_cust.value;
   let new_max_cust = event.target.max_cust.value;
   let new_avg_cookies = event.target.avg_cookies.value;
+
   //create new store object
   let newStore = new Store(new_location, new_min_cust, new_max_cust, new_avg_cookies);
   //delete old footer
@@ -180,10 +186,9 @@ const displayTable = function () {
     store_array[i].render_row();
   }
   // add event listener to form
-  form.addEventListener('submit', handle_submit);
   create_footer();
 };
 
 // Invoke display function
 displayTable();
-
+form.addEventListener('submit', handle_submit);
